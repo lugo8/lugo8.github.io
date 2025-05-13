@@ -6,28 +6,28 @@
 <body>
 
   <!-- Button that navigates to a new page -->
-  <button onclick="window.location.href='https://lugo8.github.io/bonsai'">Go to New Page</button>
+  <button onclick="href='/bonsai'">Go to New Page</button>
 
   <!-- Button that sends an HTTP request -->
   <button onclick="sendRequest()">Send HTTP Request</button>
 
   <script>
-    function sendRequest() {
-      fetch('https://your-server-url.com/api/endpoint', {
-        method: 'POST', // or 'GET', 'PUT', etc.
+    function sendPost() {
+      fetch('https://a3b4-72-253-118-191.ngrok-free.app/water', {
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ message: 'Hey there, server ❤️' })
+        body: JSON.stringify({ duration: 5 })
       })
-      .then(response => response.json())
+      .then(response => response.text())
       .then(data => {
-        console.log('Success:', data);
-        alert('Request sent! uwu');
+        console.log('Successful Watering:', data);
+        alert('POST sent');
       })
       .catch((error) => {
         console.error('Error:', error);
-        alert('Something went wrong, babygirl 😔');
+        alert('Failed to POST');
       });
     }
   </script>
