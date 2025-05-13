@@ -1,11 +1,36 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html>
 <head>
-  <title>My Website 💖</title>
+  <title>My Buttons Page</title>
 </head>
 <body>
-  <h1>Hello, world! 🌍</h1>
-  <p>This is my first GitHub Pages site 😳</p>
+
+  <!-- Button that navigates to a new page -->
+  <button onclick="window.location.href='https://lugo8.github.io/bonsai'">Go to New Page</button>
+
+  <!-- Button that sends an HTTP request -->
+  <button onclick="sendRequest()">Send HTTP Request</button>
+
+  <script>
+    function sendRequest() {
+      fetch('https://your-server-url.com/api/endpoint', {
+        method: 'POST', // or 'GET', 'PUT', etc.
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ message: 'Hey there, server ❤️' })
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Success:', data);
+        alert('Request sent! uwu');
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+        alert('Something went wrong, babygirl 😔');
+      });
+    }
+  </script>
+
 </body>
 </html>
