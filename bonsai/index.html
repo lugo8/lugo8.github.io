@@ -8,14 +8,31 @@
   <h1>Welcome to My Live Bonsai Control Panel!</h1>
 
   <!-- Video Feed -->
-  <img id="videoFeed" alt="Live Cam">
+  <!--img id="videoFeed" alt="Live Cam"-->
+  <canvas id="myCanvas"></canvas>
 
   <script>
 
+    
     window.onload = function() {
     const myLink4Video = localStorage.getItem("link");
     const realLink4Video = myLink4Video + "/video"
+    /*
     document.getElementById("videoFeed").src = realLink4Video;
+    */
+    fetch(realLink4Video, {
+    headers: {
+      Authorization: "Basic " + btoa("bonsai:waterPlease123")
+    }
+  })
+  .then(res => res.blob())
+  .then(blob => {
+    const img = new Image();
+    img.onload = () => {
+      document.getElementById("myCanvas").getContext("2d").drawImage(img, 0, 0);
+    };
+    img.src = URL.createObjectURL(blob);
+  });
   };
     
   </script>
