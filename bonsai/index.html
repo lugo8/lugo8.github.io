@@ -11,10 +11,13 @@
   <img id="videoFeed" alt="Live Cam">
 
   <script>
-    const myLink4Video = localStorage.getItem("link");
-  
 
-    document.getElementById("videoFeed").src = myLink4Video + "/video";
+    window.onload = function() {
+    const myLink4Video = localStorage.getItem("link");
+    const realLink4Video = myLink4Video + "/video"
+    document.getElementById("videoFeed").src = realLink4Video;
+  };
+    
   </script>
 
   <button onclick="location.href='/'">Home</button>
