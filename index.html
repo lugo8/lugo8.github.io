@@ -8,12 +8,16 @@
   <!-- Button that navigates to a new page -->
   <button onclick="location.href='bonsai/'">Go to New Page</button>
 
+
   <!-- Button that sends an HTTP request -->
   <button onclick="sendPost()">Water 5 Seconds</button>
 
   <script>
+    localStorage.setItem("link", "https://82eb-72-253-118-191.ngrok-free.app");
+
+    const myLink4Water = localStorage.getItem("link");
     function sendPost() {
-      fetch('https://82eb-72-253-118-191.ngrok-free.app/water', {
+      fetch(myLink4Water + '/water', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -23,7 +27,6 @@
       .then(response => response.text())
       .then(data => {
         console.log('Successful Watering:', data);
-        alert('POST sent');
       })
       .catch((error) => {
         console.error('Error:', error);
